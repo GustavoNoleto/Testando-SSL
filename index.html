@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Frontend e Backend com Axios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        #message {
+            font-size: 20px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Frontend e Backend Teste com Axios</h1>
+    <button onclick="fetchMessage()">Obter Mensagem do Backend</button>
+    <p id="message"></p>
+
+    <!-- Adicionando Axios via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        async function fetchMessage() {
+            try {
+                // Usando Axios para fazer a requisição GET
+                const response = await axios.get('http://127.0.0.1:8000/message');
+                // Exibindo a resposta no frontend
+                document.getElementById('message').innerText = response.data.message;
+            } catch (error) {
+                // Se houver erro, mostra mensagem de erro
+                document.getElementById('message').innerText = 'Erro ao comunicar com o backend!';
+            }
+        }
+    </script>
+</body>
+</html>
